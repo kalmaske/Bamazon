@@ -28,7 +28,7 @@ function selectItem() {
 		
 		for(var i = 0; i < res.length; i++) {
 			table.push(
-			    [res[i].itemID, res[i].ProductName, res[i].DepartmentName, parseFloat(res[i].Price).toFixed(2), res[i].StockQuantity]
+			    [res[i].ItemID, res[i].ProductName, res[i].DepartmentName, parseFloat(res[i].Price).toFixed(2), res[i].StockQuantity]
 			);
 		}
 		
@@ -48,7 +48,7 @@ function selectItem() {
                 },
 		]).then(function (userInput) {
 
-			connection.query('SELECT * FROM products JOIN departments ON products.DepartmentName = departments.DepartmentName', function(err, res) {
+			function(err, res) {
 		    	if (err){ 
                     console.log(" You have an error "+JSON.stringify(err));
                     throw err;}
@@ -58,14 +58,6 @@ function selectItem() {
 		    		var total = parseFloat(userInput.Quantity) * parseFloat(res[userInput.itemNumber - 1].Price);
 			    	total = total.toFixed(2);
 
-			    	var departmentTotal = parseFloat(total) + parseFloat(res[userInput.itemNumber - 1].TotalSales);
-			    	departmentTotal = departmentTotal.toFixed(2);
-
-	    			connection.query("UPDATE departments SET ? WHERE ?", [{
-		    			TotalSales: departmentTotal
-		    		}, {
-		    			DepartmentName: res[userInput.itemNumber - 1].DepartmentName
-		    		}], function(error, results) {});
 
 		    		connection.query("UPDATE products SET ? WHERE ?", [{
 		    			StockQuantity: newQuantity
@@ -86,7 +78,7 @@ function selectItem() {
 		    		console.log("We're sorry, we only have " + res[userInput.itemNumber - 1].StockQuantity + " of that product.");
 		    		orderMorItems();
 		    	}	    
-			});
+			};
 		});	
 	});
 }
