@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "amazon clone",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalmaske/Bamazon.git"
+  },
+  "author": "Khadija Almaskeen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalmaske/Bamazon/issues"
+  },
+  "homepage": "https://github.com/kalmaske/Bamazon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "inquirer": "^3.2.2",
+    "mysql": "^2.14.1"
+  }
+}
