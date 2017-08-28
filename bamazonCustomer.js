@@ -48,9 +48,9 @@ function selectItem() {
 					name: "Quantity"
 				},
 			]).then(function (userInput) {
-				var query='SELECT * FROM products  WHERE itemID=' + userInput.itemNumber;
+				var query = 'SELECT * FROM products  WHERE itemID=' + userInput.itemNumber;
 				console.log(query)
-				connection.query(query ,function (err, res) {
+				connection.query(query, function (err, res) {
 					if (err) {
 						console.log(" You have an error " + JSON.stringify(err));
 						throw err;
